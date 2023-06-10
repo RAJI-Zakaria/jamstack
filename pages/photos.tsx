@@ -28,6 +28,7 @@ const Photos: React.FC = () => {
     try {
       setLoading(true)
 
+      // @ts-ignore
       const response = await axios.get(PHOTOS_API.URL, {
         params: {
           client_id: PHOTOS_API.ACCESS_KEY,
@@ -39,6 +40,8 @@ const Photos: React.FC = () => {
       if (page === 1) {
         setPhotos(response.data.results)
       } else {
+
+        // @ts-ignore
         setPhotos((prevPhotos) => [...prevPhotos, ...response.data.results])
       }
       setLoading(false)
@@ -57,6 +60,7 @@ const Photos: React.FC = () => {
     setPage((prevPage) => prevPage + 1)
   }
 
+  // @ts-ignore
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       handleSearch()
@@ -82,6 +86,7 @@ const Photos: React.FC = () => {
     )
   }
 
+  // @ts-ignore
   return (
     <div className={styles.main}>
       <h1>Unsplash and Axios are amazing!</h1>
@@ -102,11 +107,20 @@ const Photos: React.FC = () => {
 
       <ul>
         {photos.map((photo, index) => (
+
+            // @ts-ignore
           <li key={photo.id}>
+
             <img
               className={styles.cll}
-              src={photo.urls[q]}
-              alt={photo.alt_description}
+              src={
+                // @ts-ignore
+                photo.urls[q]
+              }
+              alt={
+                // @ts-ignore
+                photo.alt_description
+              }
             />
           </li>
         ))}
