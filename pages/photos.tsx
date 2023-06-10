@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import styles from '../styles/Home.module.css'
-
+import { Radio } from '@nextui-org/react'
 
 // Import config file
 import { PHOTOS_API } from '../config/default.json'
 
 //importing loading screen
 
-import LoadingScreen from '../components/loading/LoadingScreen';
-
-
+import LoadingScreen from '../components/loading/LoadingScreen'
 
 const Photos: React.FC = () => {
   const [photos, setPhotos] = useState([])
   const [searchQuery, setSearchQuery] = useState('batman')
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(1)
-  const [q, setQ] = useState("thumb")
-
+  const [q, setQ] = useState('thumb')
 
   useEffect(() => {
     fetchPhotos()
@@ -73,29 +70,32 @@ const Photos: React.FC = () => {
     { id: '4', title: 'small' },
     { id: '5', title: 'thumb' },
   ]
-
+  const renderOption = () => {
+    return (
+      <Radio.Group value={q} onChange={setQ} aria-label="Options">
+        {options.map((option, index) => (
+          <Radio labelColor="success" key={index} value={option.title}>
+            {option.title}
+          </Radio>
+        ))}
+      </Radio.Group>
+    )
+  }
 
   return (
     <div className={styles.main}>
       <h1>Unsplash and Axios are amazing!</h1>
       <div>
         <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyPress={handleKeyPress}
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
-        {options.map((option, index) => (
-            <div key={index}>
-              <input
-                  type="radio"
-                  value={option.title}
-                  checked={q === option.title}
-                  onChange={() => setQ(option.title)}
-              />
-              <label>{option.title}</label>
-            </div>
-        ))}
+
+        <Radio.Group label="Options" defaultValue="A">
+          {renderOption()}
+        </Radio.Group>
 
         <button onClick={handleSearch}>Search</button>
       </div>
