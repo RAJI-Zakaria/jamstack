@@ -28,29 +28,35 @@ const IndexPage = () => {
     return (
         <Container>
             <Row justify="center" align="center">
-               <Col>
-                   <h1>Todos</h1>  <br/>
-                   <Input
-                       value={todoTitle}
-                       onChange={(event) => setTodoTitle(event.target.value)}
-                       clearable
-                       bordered
-                       labelPlaceholder="Name"
-                   />
-                   <br/>  <br/>
-                   <Button onClick={handleAddTodo}>Add Todo</Button>
-               </Col>
+                <Col span={6} justify="center" align="center">
+                    <h1
+                        style={{ marginBottom: '10px' }} // Add margin bottom to the Input
+                    >Todos</h1>
+                    <Input
+                        value={todoTitle}
+                        onChange={(event) => setTodoTitle(event.target.value)}
+                        clearable
+                        bordered
+                        labelPlaceholder="Name"
+                        fullWidth // Add this prop to make the Input stretch
+                    />
+                    <Button       style={{ marginTop: '10px', marginBottom: '40px' }} // Add margin bottom to the Input
+                                  onClick={handleAddTodo}>Add Todo</Button>
+                </Col>
             </Row>
 
             <Row justify="center" align="center">
-                <ul>
-                    {todos.map((todo, index) => (
-                        <li key={index}>
-                            {todo.title} ===|||||=== <button onClick={() => handleDeleteTodo(index)}>Delete</button>
-                        </li>
-                    ))}
-                </ul>
+               <Col span={5}>
+                   <ul className="todo-list">
+                       {todos.map((todo, index) => (
+                           <li key={index} className="todo-item">
+                               {todo.title} <button onClick={() => handleDeleteTodo(index)}>Delete</button>
+                           </li>
+                       ))}
+                   </ul>
+               </Col>
             </Row>
+
         </Container>
     );
 };

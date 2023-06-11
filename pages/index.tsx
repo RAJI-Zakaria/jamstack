@@ -19,6 +19,9 @@ export default function Home() {
           <Link href="/blogs" passHref>
               Go to Blog Page
           </Link>
+          <Link href="/todos" passHref>
+              Go to TODO Page
+          </Link>
       </main>
     </>
   )
