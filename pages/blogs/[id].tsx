@@ -10,6 +10,7 @@ type ArticleProps = {
     article: Article;
 };
 
+
 const ArticlePage = ({ article }: ArticleProps) => {
     return (
         <div>
