@@ -199,3 +199,14 @@ p {
 .todo-item button:hover {
   background-color: #c0392b;
 }
+
+
+
+
+
+
+
+
+.card:hover {
+  background-color: #f1f1f1; /* New background color on hover */
+}
