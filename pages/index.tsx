@@ -37,7 +37,7 @@ export default function Home() {
                               <CardOption title="Blogs" icon="https://www.onlygfx.com/wp-content/uploads/2017/12/grunge-yes-no-icon-1.png" link="/blogs" />
                           </Col>
                           <Col span={4}>
-                              <CardOption title="Blogs" icon="https://www.onlygfx.com/wp-content/uploads/2017/12/grunge-yes-no-icon-1.png" link="/blogs" />
+                              <CardOption title="Api using nextjs" icon="https://boumgrafik.com/wp-content/uploads/2021/02/api.png" link="/api/hello" />
                           </Col>
                       </Row>
 
