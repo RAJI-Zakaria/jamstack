@@ -1,0 +1,6 @@
+{
+    "PHOTOS_API" :{
+        "ACCESS_KEY" :  "EQreoYqHcTDuZVYxU-4qToU9_f9BM-_SBU6gVSBMaoI",
+        "URL" : "https://api.unsplash.com/search/photos"
+    }
+}
