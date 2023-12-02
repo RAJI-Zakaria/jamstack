@@ -1,0 +1,10 @@
+services: 
+ # web app:
+ web-app:
+   container_name: web-app
+   build: ./
+   security_opt:
+     - no-new-privileges:true
+   restart: always
+   ports:
+     - 80:80
