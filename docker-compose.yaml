@@ -1,10 +1,11 @@
-services: 
- # web app:
- web-app:
-   container_name: web-app
-   build: ./
-   security_opt:
-     - no-new-privileges:true
-   restart: always
-   ports:
-     - 80:80
+version: '3'
+
+services:
+  web-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: web-app
+    ports:
+      - "80:80"
+    restart: always
