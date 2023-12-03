@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { Card, Row, Col } from '@nextui-org/react';
 import React from "react";
 import Link from "next/link";
+import Image from 'next/image';
 
 type CardProps = {
     title: string;
@@ -25,14 +26,14 @@ const Cardoption: React.FC<CardProps> = ({ title, icon, link }) => {
                 transition: 'background-color 0.3s',
                 cursor: 'pointer',
             }}
-            className="card"
+            className="bg-gray-200 rounded-lg m-4"
         >
             <Card.Body style={{
                 textAlign: 'center'
             }}>
                 <Row align="center" justify="center">
-                    <Col>
-                        <img height="120" src={icon} alt="Icon" />
+                    <Col className='flex flex-col items-center justify-center '>
+                        <img className='w-80 h-80 align-center' height="120px" src={icon} alt="Icon" />
                     </Col>
                 </Row>
                 <Row align="center" justify="center">

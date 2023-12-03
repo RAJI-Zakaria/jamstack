@@ -2,16 +2,19 @@
   {
     "id": 1,
     "title": "First Article",
-    "description": "This is the description of the first article."
+    "description": "This is the description of the first article.",
+    "imageUrl": "https://via.placeholder.com/150"
   },
   {
     "id": 2,
     "title": "Second Article",
-    "description": "This is the description of the second article."
+    "description": "This is the description of the second article.",
+    "imageUrl": "https://via.placeholder.com/150"
   },
   {
     "id": 3,
     "title": "Third Article",
-    "description": "This is the description of the third article."
+    "description": "This is the description of the third article.",
+    "imageUrl": "https://via.placeholder.com/150"
   }
 ]

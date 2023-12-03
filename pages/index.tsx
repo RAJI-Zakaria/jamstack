@@ -1,13 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
-import Header from '../components/header'
-import Link from 'next/link';
-
+import Head from 'next/head';
+import Header from '../components/header';
 import { Container, Row, Col } from '@nextui-org/react';
-
-import CardOption from '../components/cards/CardOption'
+import CardOption from '../components/cards/CardOption';
 
 export default function Home() {
   return (
@@ -16,38 +10,42 @@ export default function Home() {
         <title>Create Next App</title>
       </Head>
 
-
-      <main className={styles.main}>
+      <main className="flex flex-col justify-between items-center p-24 min-h-screen">
         <Header />
 
-
-
-          <Container>
-
-              <Row justify="center" align="center">
-                  <Col>
-                      <Row gap={1}  aria-colspan={4} justify="center" align="center">
-                          <Col span={4}>
-                              <CardOption title="Photos Api" icon="https://cdn-icons-png.flaticon.com/512/25/25694.png" link="/photos" />
-                          </Col>
-                          <Col span={4}>
-                              <CardOption title="Todos" icon="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" link="/todos" />
-                          </Col>
-                          <Col span={4}>
-                              <CardOption title="Blogs" icon="https://www.onlygfx.com/wp-content/uploads/2017/12/grunge-yes-no-icon-1.png" link="/blogs" />
-                          </Col>
-                          <Col span={4}>
-                              <CardOption title="Api using nextjs" icon="https://boumgrafik.com/wp-content/uploads/2021/02/api.png" link="/api/hello" />
-                          </Col>
-                      </Row>
-
-                  </Col>
-              </Row>
-          </Container>
-
-
-
+        <Container>
+          <Row justify="center" align="center" className="gap-4">
+            <Col className="w-full md:w-1/2 lg:w-1/4">
+              <CardOption
+                title="Photos Api"
+                icon="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+                link="/photos" 
+              />
+            </Col>
+            <Col className="w-full md:w-1/2 lg:w-1/4">
+              <CardOption
+                title="Todos"
+                icon="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                link="/todos"
+              />
+            </Col>
+            <Col className="w-full md:w-1/2 lg:w-1/4">
+              <CardOption
+                title="Blogs"
+                icon="https://www.onlygfx.com/wp-content/uploads/2017/12/grunge-yes-no-icon-1.png"
+                link="/blogs"
+              />
+            </Col>
+            <Col sm className="w-full md:w-1/2 lg:w-1/4">
+              <CardOption
+                title="Api using nextjs"
+                icon="https://boumgrafik.com/wp-content/uploads/2021/02/api.png"
+                link="/api/hello"
+              />
+            </Col>
+          </Row>
+        </Container>
       </main>
     </>
-  )
+  );
 }

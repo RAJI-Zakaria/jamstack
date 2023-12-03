@@ -10,11 +10,10 @@ type ArticleProps = {
     article: Article;
 };
 
-
 const ArticlePage = ({ article }: ArticleProps) => {
     return (
-        <div>
-            <h1>{article.title}</h1>
+        <div className="p-4">
+            <h1 className="text-3xl font-bold mb-4">{article.title}</h1>
             <p>{article.description}</p>
         </div>
     );

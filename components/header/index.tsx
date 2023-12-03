@@ -6,7 +6,7 @@ const Header = () => {
         <img src="/vercel.svg" alt="logo" />
       </div>
 
-      <h1 className="title">React App2</h1>
+      <h1 className="title">NextJS is Really damn cool</h1>
     </div>
   )
 }
