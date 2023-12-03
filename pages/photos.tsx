@@ -16,7 +16,7 @@ const Photos: React.FC = () => {
 
   useEffect(() => {
     fetchPhotos();
-  }, [page]);
+  }, [page, searchQuery, q]);
 
   const fetchPhotos = async () => {
     try {
@@ -25,7 +25,7 @@ const Photos: React.FC = () => {
         params: {
           client_id: PHOTOS_API.ACCESS_KEY,
           query: searchQuery,
-          page: page,
+          page,
         },
       });
 
@@ -50,7 +50,7 @@ const Photos: React.FC = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const handleKeyPress = (e: any) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSearch();
     }
@@ -58,6 +58,7 @@ const Photos: React.FC = () => {
 
   const handleImageClick = (photo: any) => {
     window.open(photo.urls[q], '_blank');
+    setSelectedPhoto(photo);
   };
 
   const options = [
@@ -73,7 +74,7 @@ const Photos: React.FC = () => {
       <Radio.Group value={q} onChange={setQ} aria-label="Options">
         <div className="flex justify-center">
           {options.map((option, index) => (
-            <Radio  key={index} labelColor="success" value={option.title}>
+            <Radio className='m-5' key={index} labelColor="success" value={option.title}>
               {option.title}
             </Radio>
           ))}
@@ -81,11 +82,10 @@ const Photos: React.FC = () => {
       </Radio.Group>
     );
   };
-  
-  
+
   return (
     <div className="flex justify-center items-center">
-    <div className="p-4 ">
+      <div className="p-4 w-100 flex flex-col justify-center items-center">
         <h1 className="text-4xl mb-4 text-center">Unsplash and Axios are amazing!</h1>
         <div className="max-w-xl w-full m-auto justify-center  mb-4">
           <input
@@ -106,7 +106,7 @@ const Photos: React.FC = () => {
 
         <div className="flex flex-wrap justify-center gap-4">
           {photos &&
-            photos.map((photo: any, index) => (
+            photos.map((photo: any) => (
               <div key={photo.id} className="w-1/6">
                 <Image
                   width={300}
@@ -123,7 +123,7 @@ const Photos: React.FC = () => {
 
         {selectedPhoto && (
           <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-10">
-            <div className="max-w-2xl max-h-2xl overflow-auto">
+            <div className="max-w-2xl max-h-2xl overflow-auto" onClick={() => setSelectedPhoto(null)}>
               <Image
                 className="w-full h-auto"
                 src={selectedPhoto.urls.full}
@@ -135,7 +135,7 @@ const Photos: React.FC = () => {
 
         {photos && photos.length > 0 && !loading && (
           <button
-            className="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-600 w-full"
+            className="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-600 w-80 mx-auto"
             onClick={handleLoadMore}
           >
             Load More
@@ -147,6 +147,5 @@ const Photos: React.FC = () => {
     </div>
   );
 };
-
 
 export default Photos;
