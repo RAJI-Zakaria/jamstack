@@ -1,11 +1,11 @@
 version: '3'
-
 services:
-  web-app:
+  nextjs-app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: web-app
     ports:
-      - "80:80"
+      - "80:3000" # Forward container's 3000 port to host's 80 port
+    volumes:
+      - .:/usr/src/app # Update the volume to match the working directory in Dockerfile
     restart: always

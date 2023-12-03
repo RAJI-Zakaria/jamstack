@@ -1,5 +1,5 @@
-# Use an official Node.js runtime as a parent image
-FROM node:14
+# Use the latest LTS version of Node.js
+FROM node:lts
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -9,12 +9,14 @@ COPY package*.json ./
 
 # Install app dependencies
 RUN npm install
+# Install Next.js and related packages globally
+RUN npm install -g next react react-dom
 
 # Bundle app source
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 80
+# Expose the port that Next.js runs on (default is 3000)
+EXPOSE 3000
 
 # Define the command to run your app
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
