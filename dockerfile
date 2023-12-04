@@ -10,9 +10,7 @@ COPY package*.json ./
 # Install app dependencies
 RUN npm install
 # Install Next.js and related packages globally
-RUN npm install next@latest react@latest react-dom@latest
-RUN npm install yup
-RUN npm run dev
+RUN npm install next react react-dom
 
 # Bundle app source
 COPY . .
@@ -21,4 +19,4 @@ COPY . .
 EXPOSE 3000
 
 # Define the command to run your app
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "build"]
