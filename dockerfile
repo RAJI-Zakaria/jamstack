@@ -1,5 +1,5 @@
 # Use the latest LTS version of Node.js
-FROM node:lts
+FROM node:alpine
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -10,7 +10,9 @@ COPY package*.json ./
 # Install app dependencies
 RUN npm install
 # Install Next.js and related packages globally
-RUN npm install -g next react react-dom
+RUN npm install next@latest react@latest react-dom@latest
+RUN npm install yup
+RUN npm run dev
 
 # Bundle app source
 COPY . .
