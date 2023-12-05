@@ -1,5 +1,5 @@
 # Use a specific version of Node.js for stability
-FROM node:14-alpine
+FROM node:16-alpine
 
 # Set environment variables
 ENV NODE_ENV=production
@@ -16,7 +16,12 @@ RUN yarn install --frozen-lockfile --production
 
 # Bundle app source (including source code, not build files)
 COPY . .
- 
+
+RUN apk add --no-cache bash git openssh
+RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+RUN source ~/.bashrc && nvm install 16
+RUN npm install -g yarn
+
 # Build the app (this can be customized based on your application setup)
 RUN yarn build
 
