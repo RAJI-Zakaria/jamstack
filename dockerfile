@@ -1,22 +1,28 @@
-# Use the latest LTS version of Node.js
-FROM node:alpine
+# Use a specific version of Node.js for stability
+FROM node:14-alpine
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3000
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json to install dependencies
+# Copy only necessary files for dependency installation
 COPY package*.json ./
+COPY yarn.lock ./
 
-# Install app dependencies
-RUN npm install
-# Install Next.js and related packages globally
-RUN npm install next react react-dom
+# Install app dependencies using yarn for deterministic builds
+RUN yarn install --frozen-lockfile --production
 
-# Bundle app source
+# Bundle app source (including source code, not build files)
 COPY . .
 
-# Expose the port that Next.js runs on (default is 3000)
-EXPOSE 3000
+# Build the app (this can be customized based on your application setup)
+RUN yarn build
 
-# Define the command to run your app
-CMD ["npm", "run", "build"]
+# Expose the port that your app runs on
+EXPOSE $PORT
+
+# Specify the command to run your app
+CMD ["yarn", "start"]
