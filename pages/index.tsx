@@ -36,7 +36,7 @@ export default function Home() {
                 link="/blogs"
               />
             </Col>
-            <Col sm className="w-full md:w-1/2 lg:w-1/4">
+            <Col className="w-full md:w-1/2 lg:w-1/4">
               <CardOption
                 title="Api using nextjs"
                 icon="https://boumgrafik.com/wp-content/uploads/2021/02/api.png"

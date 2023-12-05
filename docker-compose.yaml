@@ -11,3 +11,4 @@ services:
       - PORT=3000 # Set the port for the app
     restart: unless-stopped # Ensures the service restarts unless explicitly stopped
     command: ["yarn", "start"] # Override the default CMD from the Dockerfile
+ 

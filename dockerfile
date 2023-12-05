@@ -10,14 +10,13 @@ WORKDIR /usr/src/app
 
 # Copy only necessary files for dependency installation
 COPY package*.json ./
-COPY yarn.lock ./
 
 # Install app dependencies using yarn for deterministic builds
 RUN yarn install --frozen-lockfile --production
 
 # Bundle app source (including source code, not build files)
 COPY . .
-
+ 
 # Build the app (this can be customized based on your application setup)
 RUN yarn build
 

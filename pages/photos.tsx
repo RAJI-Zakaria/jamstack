@@ -3,16 +3,17 @@ import axios from 'axios';
 import { Radio, Image } from '@nextui-org/react';
 import ENV from '../config/default.json';
 import LoadingScreen from '../components/loading/LoadingScreen';
+import { Photo } from '../types/types';
 
 const { PHOTOS_API } = ENV;
 
 const Photos: React.FC = () => {
-  const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState<Photo[]>([]); 
   const [searchQuery, setSearchQuery] = useState('batman');
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [q, setQ] = useState('thumb');
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
 
   useEffect(() => {
     fetchPhotos();
