@@ -47,7 +47,7 @@ export default function Home() {
             </Col>
             <Col className="hidden sm:block w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
               <CardOption
-                title="Api using nextjs"
+                title="Basic Calculator"
                 icon="https://m.media-amazon.com/images/I/71hSAIENHkL._AC_UF894,1000_QL80_.jpg"
                 link="/calculator"
               />
