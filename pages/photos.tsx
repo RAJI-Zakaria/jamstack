@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { Radio, Image } from '@nextui-org/react';
 import ENV from '../config/default.json';
@@ -14,10 +14,29 @@ const Photos: React.FC = () => {
   const [page, setPage] = useState(1);
   const [q, setQ] = useState('thumb');
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
+  const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetchPhotos();
   }, [page, searchQuery, q]);
+
+  useEffect(() => {
+    // Function to handle clicks outside the popup
+    function handleClickOutside(event: MouseEvent) {
+      if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
+        setSelectedPhoto(null);
+      }
+    }
+
+    // Adding event listener on mount
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Removing event listener on unmount
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
 
   const fetchPhotos = async () => {
     try {
@@ -58,9 +77,11 @@ const Photos: React.FC = () => {
   };
 
   const handleImageClick = (photo: any) => {
-    window.open(photo.urls[q], '_blank');
+    //window.open(photo.urls[q], '_blank');
     setSelectedPhoto(photo);
   };
+
+    
 
   const options = [
     { id: '1', title: 'raw' },
@@ -105,26 +126,27 @@ const Photos: React.FC = () => {
           {renderOption()}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4">
-          {photos &&
-            photos.map((photo: any) => (
-              <div key={photo.id} className="w-1/6">
-                <Image
-                  width={300}
-                  height={200}
-                  className="w-full h-auto rounded"
-                  src={photo.urls[q]}
-                  alt={photo.alt_description}
-                  onClick={() => handleImageClick(photo)}
-                  objectFit="cover"
-                />
-              </div>
-            ))}
-        </div>
+       
+  <div className="flex flex-wrap justify-center gap-4">
+    {photos?.map((photo: Photo) => (
+      <div key={photo.id} className="w-1/6">
+        <Image
+          width={300}
+          height={200}
+          className="w-full h-auto rounded"
+          src={photo.urls[q as keyof typeof photo.urls]} // Type assertion with keyof
+          alt={photo.alt_description}
+          onClick={() => handleImageClick(photo)}
+          objectFit="cover"
+        />
+      </div>
+    ))}
+  </div>
+
 
         {selectedPhoto && (
           <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-10">
-            <div className="max-w-2xl max-h-2xl overflow-auto" onClick={() => setSelectedPhoto(null)}>
+            <div className="max-w-2xl max-h-2xl overflow-auto" ref={popupRef} onClick={() => setSelectedPhoto(null)}>
               <Image
                 className="w-full h-auto"
                 src={selectedPhoto.urls.full}
