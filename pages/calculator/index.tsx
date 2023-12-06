@@ -1,8 +1,7 @@
 // pages/Calculator.tsx
 import { useState } from 'react';
-import styles from '../../styles/calculator.module.css';
+import styles from '../styles/Calculator.module.css';
 import {Col, Container, Row} from "@nextui-org/react";
-import CardOption from "../../components/cards/CardOption";
 
 const Calculator = () => {
     //hold the expressions : ex : 12+2/21*49 =

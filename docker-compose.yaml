@@ -10,4 +10,4 @@ services:
       - NODE_ENV=production # Set Node.js environment to production (if needed)
       - PORT=3000 # Set the port for the app
     restart: unless-stopped # Ensures the service restarts unless explicitly stopped
-    command: ["npm", "start"] # Override the default CMD from the Dockerfile
+    command: ["npm", "run", "dev"] # Override the default CMD from the Dockerfile
