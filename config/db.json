@@ -1,0 +1,17 @@
+{
+    "development": {
+        "username": "root",
+        "password": "root",
+        "database": "db_dev",
+        "host": "localhost",
+        "dialect": "mariadb"
+    },
+    "production": {
+        "username": "root",
+        "password": "root",
+        "database": "db_dev",
+        "host": "localhost",
+        "dialect": "mariadb"
+    }
+}
+    
