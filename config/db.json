@@ -3,14 +3,14 @@
         "username": "root",
         "password": "root",
         "database": "db_dev",
-        "host": "localhost",
+        "host": "192.168.1.101",
         "dialect": "mariadb"
     },
     "production": {
         "username": "root",
         "password": "root",
         "database": "db_dev",
-        "host": "localhost",
+        "host": "192.168.1.101",
         "dialect": "mariadb"
     }
 }
