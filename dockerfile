@@ -1,7 +1,7 @@
 # Use a specific version of Node.js for stability
 FROM node:16-alpine
 
-#production
+# Set environment variable for production
 ENV PORT=3000
 
 # Set the working directory in the container
