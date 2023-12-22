@@ -15,17 +15,17 @@ export default function App({ Component, pageProps }:AppProps) {
   )
 }
 
-App.getInitialProps = async ({ Component, ctx }: any) => {
-  // Check password before rendering any page
-  if (ctx.req.url !== '/login' && !ctx.query.password) {
-      passwordProtection(ctx.req, ctx.res, () => {});
-  }
+// App.getInitialProps = async ({ Component, ctx }: any) => {
+//   // Check password before rendering any page
+//   if (ctx.req.url !== '/login' && !ctx.query?.password) {
+//       passwordProtection(ctx.req, ctx.res, () => {});
+//   }
 
-  let pageProps = {};
-  if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-  }
+//   let pageProps = {};
+//   if (Component.getInitialProps) {
+//       pageProps = await Component.getInitialProps(ctx);
+//   }
 
-  return { pageProps };
-};
+//   return { pageProps };
+// };
 
