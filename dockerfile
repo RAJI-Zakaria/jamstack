@@ -19,5 +19,8 @@ COPY . .
 # Expose the port that your app runs on
 EXPOSE $PORT
 
+# Build the Next.js app
+RUN npm run build
+
 # Specify the command to run your app
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
